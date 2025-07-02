@@ -41,15 +41,7 @@ python mask_detector.py
 
 4. Press `ESC` to exit the webcam window.
 
-## 📁 Project Structure
 
-```
-face-mask-detector/
-├── mask_detector.py                    # Main script
-├── mask_detector.h5                    # Trained Keras model
-├── haarcascade_frontalface_default.xml # Face detection XML
-├── README.md                           # This file
-```
 
 ## 🧪 Model Info
 
