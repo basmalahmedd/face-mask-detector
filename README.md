@@ -48,6 +48,7 @@ python mask_detector.py
 - Input shape: (224, 224, 3)
 - Output: Binary classification (`[1] = Mask`, `[0] = No Mask`)
 - Training was done using a dataset of face images with and without masks.
+The model (mask_detector.h5) was taken from https://github.com/balajisrinivas
 
 ## 🎥 Task Submission (Uneeq Interns)
 
