@@ -35,7 +35,7 @@ while True:
     label = "Mask" if prob > 0.5 else "No Mask"
     color = (0, 255, 0) if label == "Mask" else (0, 0, 255)
 
-    # Detect faces just to draw rectangle (not for prediction)
+    # Detect faces 
     gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5)
 
@@ -45,10 +45,10 @@ while True:
         cv.putText(frame, f"{label} ({prob:.2f})", (x, y - 10),
                    cv.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
 
-    # Show output
+    #  output
     cv.imshow("Face Mask Detection", frame)
 
-    # Exit on ESC
+    # Exit 
     if cv.waitKey(1) == 27:
         break
 
