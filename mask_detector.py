@@ -2,21 +2,19 @@ import cv2 as cv
 import numpy as np
 from keras.models import load_model
 
-# Load the trained mask detection model
+
 model_path = "mask_detector.h5"
 maskNet = load_model(model_path)
 
-# Load Haar cascade for face detection
 face_cascade = cv.CascadeClassifier("haarcascade_frontalface_default.xml")
 
 # Preprocess full frame for prediction
 def process_frame(frame):
-    resized = cv.resize(frame, (224, 224))  # Resize to model's input size
+    resized = cv.resize(frame, (224, 224)) 
     resized = resized.astype("float32") / 255.0
-    resized = np.expand_dims(resized, axis=0)  # Shape: (1, 224, 224, 3)
+    resized = np.expand_dims(resized, axis=0)  
     return resized
 
-# Start webcam
 cap = cv.VideoCapture(0)
 
 if not cap.isOpened():
@@ -35,7 +33,7 @@ while True:
     label = "Mask" if prob > 0.5 else "No Mask"
     color = (0, 255, 0) if label == "Mask" else (0, 0, 255)
 
-    # Detect faces just to draw rectangle (not for prediction)
+    # (not for prediction)
     gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5)
 
@@ -45,7 +43,7 @@ while True:
         cv.putText(frame, f"{label} ({prob:.2f})", (x, y - 10),
                    cv.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
 
-    # Show output
+   
     cv.imshow("Face Mask Detection", frame)
 
     # Exit on ESC
